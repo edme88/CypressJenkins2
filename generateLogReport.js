@@ -49,3 +49,8 @@ data += `TESTS FALLADOS: ${testsFallados} \n`;
 data += `TESTS NO EJECUTADOS: ${testsSkipped} \n`;
 
 fs.writeFileSync("reports/programming.txt", data);
+
+const lines = data.split("\n");
+for (const line of lines) {
+  console.log(line);
+}
