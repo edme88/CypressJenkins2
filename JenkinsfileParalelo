@@ -9,21 +9,25 @@ pipeline {
         }
         stage('Test Execution in Desktop') {
             parallel {
-                steps {
-                    script {
-                        try {
-                            bat 'npx cypress run --e2e --browser chrome'
-                        } catch (Exception e) {
-                            echo "Errores en ejecucion de CHROME"
+                stage('Test Execution in Desktop in CHROME') {
+                    steps {
+                        script {
+                            try {
+                                bat 'npx cypress run --e2e --browser chrome'
+                            } catch (Exception e) {
+                                echo "Errores en ejecucion de CHROME"
+                            }
                         }
                     }
                 }
-                steps {
-                    script {
-                        try {
-                            bat 'npx cypress run --e2e --browser firefox'
-                        } catch (Exception e) {
-                            echo "Errores en ejecucion de FIREFOX"
+                stage('Test Execution in Desktop in FIREFOX') {
+                    steps {
+                        script {
+                            try {
+                                bat 'npx cypress run --e2e --browser firefox'
+                            } catch (Exception e) {
+                                echo "Errores en ejecucion de FIREFOX"
+                            }
                         }
                     }
                 }
