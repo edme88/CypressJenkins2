@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    triggers {
+        cron '0 0 * * 7'
+    }
 
     stages {
         stage('Clone Repo'){
