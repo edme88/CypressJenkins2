@@ -2,6 +2,11 @@ pipeline {
     agent any
 
     stages {
+        stage('Clone Repo'){
+            steps{
+                git branch: 'main', url: 'https://github.com/edme88/CypressJenkins2.git'
+            }
+        }
         stage('Dependencies') {
             steps {
                 bat 'npm ci'
