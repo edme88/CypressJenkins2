@@ -25,12 +25,11 @@ parameters:
 trigger:
 - none
 
-pool:
-  vmImage: ${{ parameters.image }}
-
 jobs:
 - job: InstallNode
   displayName: 'Install Node.js'
+  pool:
+    vmImage: ${{ parameters.image }}
   steps:
   - task: NodeTool@0
     inputs:
