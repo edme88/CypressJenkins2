@@ -17,10 +17,14 @@ parameters:
     type: string
     default: chrome
     values:
-    - chrome
-    - firefox
-    - edge
-    - electron
+      - chrome
+      - firefox
+      - edge
+      - electron
+  - name: tags
+    displayName: tags
+    type: string
+    default: "@regresion"
 
 trigger:
 - none
@@ -41,4 +45,4 @@ jobs:
   steps:
     - script: |
         npm ci
-        npx cypress run --e2e --browser ${{ parameters.navegador }}
+        npx cypress run --e2e --browser ${{ parameters.navegador }} --env grepTags=${{ parameters.tags }}
