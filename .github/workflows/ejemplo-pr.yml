@@ -1,0 +1,14 @@
+name: Workflow de Pull Request
+
+on:
+  pull_request:
+    types: ['opened', 'edited', 'reopened','synchronize']
+
+jobs:
+  new-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: seferov/pr-lint-action@v1.2.0
+        with:
+          title-regex: '^\JIRA-\d+\s.+' 
+          error-message: 'Agregar al ticket el titulo JIRA-number'
