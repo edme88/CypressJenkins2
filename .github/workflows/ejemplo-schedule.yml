@@ -1,4 +1,4 @@
-name: push in branch main
+name: schedule - ejecucion diaria
 
 on:
   schedule:
