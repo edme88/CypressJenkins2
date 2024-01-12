@@ -1,0 +1,23 @@
+name: complete e2e
+
+on: 
+  push:
+    branches:
+      'main'
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  prueba-unitaria:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+
+      - name: install npm
+        run: npm ci
+
+      - name: run unit tests
+        run: npx jest
+      
