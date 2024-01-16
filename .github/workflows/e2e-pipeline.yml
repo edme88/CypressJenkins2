@@ -53,3 +53,16 @@ jobs:
         uses: github/codeql-action/analyze@v3
         with:
           category: "/language:${{matrix.language}}"
+  
+  e2e:
+    needs: [prueba-linting-codeql]
+    runs-on: ubuntu-latest
+    environment: Testing
+
+    steps:
+      - name: "uso de variables y secrets"
+        run: |
+          echo "variable del repositorio $USER_TEST"
+        env:
+          USER_VAR: ${{ vars.USER_TEST }}
+          PASS_SECRET: ${{ secrets.PASS_TEST }}
