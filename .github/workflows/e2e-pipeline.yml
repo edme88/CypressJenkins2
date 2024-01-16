@@ -66,3 +66,18 @@ jobs:
         env:
           USER_VAR: ${{ vars.USER_TEST }}
           PASS_SECRET: ${{ secrets.PASS_TEST }}
+      
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+
+      - name: install npm
+        run: npm ci
+
+      - name: run unit tests
+        run: npx cypress run --e2e --browser chrome
+
+      - uses: actions/upload-artifact@v4.0.0
+        with:
+          name: my_new_report.html
+          path: ./reports/my_new_report.html
+
