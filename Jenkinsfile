@@ -15,6 +15,13 @@ pipeline {
                 bat 'npm ci'
             }
         }
+        stage('SonarQube analysis') {
+            steps {
+                withSonarQubeEnv('sonarQube1') {
+                    bat "sonar-scanner"
+                }
+            }
+        }
         stage('Test Execution in Desktop') {
             steps {
                 script {
